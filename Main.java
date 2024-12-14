@@ -29,5 +29,14 @@ public class Main {
         System.out.println(MIS1);
         System.out.println("Size: " + MIS1.size());
         System.out.println("=============================End Greedy algorithm=============================");
+
+        GreedyTest.testDisconnectedGraph();
+        GreedyTest.testFullyConnectedGraph();
+        GreedyTest.testTreeGraph();
+        GreedyTest.testLargeAndComplexGraph();
+        BacktrackingTest.testDisconnectedGraph();
+        BacktrackingTest.testFullyConnectedGraph();
+        BacktrackingTest.testTreeGraph();
+        BacktrackingTest.testLargeAndComplexGraph();
     }
 }
