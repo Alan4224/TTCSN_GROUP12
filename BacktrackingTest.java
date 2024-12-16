@@ -1,21 +1,40 @@
+import java.time.Instant;
+import java.time.Duration;
 import java.util.Set;
 
-public class BacktrackingTest {
+public class BacktrackingTest implements Test {
+
+    private void printResults(String testName, Set<Integer> MIS, Duration timeElapsed) {
+        System.out.println(testName);
+        System.out.println("Maximum Independent Set (Backtracking):");
+        System.out.println(MIS);
+        System.out.println("Size: " + MIS.size());
+        System.out.println("Execution time: " + timeElapsed.toNanos() + " nanoseconds");
+        System.out.println();
+    }
+
     // Trường hợp 1: Đồ thị không liên thông
-    public static void testDisconnectedGraph() {
+    @Override
+    public void testDisconnectedGraph() {
+        Instant start = Instant.now();
+
         Graph graph = new Graph(4);
         graph.addEdge(0, 1);
         graph.addEdge(2, 3);
         MISUsingBackTrackAlgorithm backTrack = new MISUsingBackTrackAlgorithm();
         Set<Integer> MIS = backTrack.findMIS(graph);
-        System.out.println("Test 1 (Disconnected graph)");
-        System.out.println("Maximum Independent Set (Backtracking):");
-        System.out.println(MIS);
-        System.out.println("Size: " + MIS.size());
+
+        Instant end = Instant.now();
+        Duration timeElapsed = Duration.between(start, end);
+
+        printResults("Test 1 (Disconnected graph)", MIS, timeElapsed);
     }
 
     // Trường hợp 2: Đồ thị đầy đủ
-    public static void testFullyConnectedGraph() {
+    @Override
+    public void testFullyConnectedGraph() {
+        Instant start = Instant.now();
+
         Graph graph = new Graph(4);
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
@@ -25,14 +44,18 @@ public class BacktrackingTest {
         graph.addEdge(2, 3);
         MISUsingBackTrackAlgorithm backTrack = new MISUsingBackTrackAlgorithm();
         Set<Integer> MIS = backTrack.findMIS(graph);
-        System.out.println("Test 2 (Fully connected graph)");
-        System.out.println("Maximum Independent Set (Backtracking):");
-        System.out.println(MIS);
-        System.out.println("Size: " + MIS.size());
+
+        Instant end = Instant.now();
+        Duration timeElapsed = Duration.between(start, end);
+
+        printResults("Test 2 (Fully connected graph)", MIS, timeElapsed);
     }
 
     // Trường hợp 3: Đồ thị cây
-    public static void testTreeGraph() {
+    @Override
+    public void testTreeGraph() {
+        Instant start = Instant.now();
+
         Graph graph = new Graph(5);
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
@@ -40,14 +63,18 @@ public class BacktrackingTest {
         graph.addEdge(1, 4);
         MISUsingBackTrackAlgorithm backTrack = new MISUsingBackTrackAlgorithm();
         Set<Integer> MIS = backTrack.findMIS(graph);
-        System.out.println("Test 3 (Tree graph)");
-        System.out.println("Maximum Independent Set (Backtracking):");
-        System.out.println(MIS);
-        System.out.println("Size: " + MIS.size());
+
+        Instant end = Instant.now();
+        Duration timeElapsed = Duration.between(start, end);
+
+        printResults("Test 3 (Tree graph)", MIS, timeElapsed);
     }
 
     // Trường hợp 4: Đồ thị có nhiều đỉnh, nhiều cạnh
-    public static void testLargeAndComplexGraph() {
+    @Override
+    public void testLargeAndComplexGraph() {
+        Instant start = Instant.now();
+
         Graph graph = new Graph(9);
         graph.addEdge(0, 1);
         graph.addEdge(0, 3);
@@ -63,10 +90,10 @@ public class BacktrackingTest {
         graph.addEdge(7, 8);
         MISUsingBackTrackAlgorithm backTrack = new MISUsingBackTrackAlgorithm();
         Set<Integer> MIS = backTrack.findMIS(graph);
-        System.out.println("Test 4 (Complex graph)");
-        System.out.println("Maximum Independent Set (Backtracking):");
-        System.out.println(MIS);
-        System.out.println("Size: " + MIS.size());
-    }
 
+        Instant end = Instant.now();
+        Duration timeElapsed = Duration.between(start, end);
+
+        printResults("Test 4 (Complex graph)", MIS, timeElapsed);
+    }
 }

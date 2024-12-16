@@ -1,5 +1,4 @@
 import java.util.Set;
-
 public class Main {
     public static void main(String[] args) {
         Graph graph = new Graph(5);
@@ -30,13 +29,18 @@ public class Main {
         System.out.println("Size: " + MIS1.size());
         System.out.println("=============================End Greedy algorithm=============================");
 
-        GreedyTest.testDisconnectedGraph();
-        GreedyTest.testFullyConnectedGraph();
-        GreedyTest.testTreeGraph();
-        GreedyTest.testLargeAndComplexGraph();
-        BacktrackingTest.testDisconnectedGraph();
-        BacktrackingTest.testFullyConnectedGraph();
-        BacktrackingTest.testTreeGraph();
-        BacktrackingTest.testLargeAndComplexGraph();
+        
+        System.out.println("=============================Testing=============================");
+
+        Test greedyTest = new GreedyTest();
+        Test backtrackTest = new BacktrackingTest();
+        greedyTest.testDisconnectedGraph();
+        greedyTest.testFullyConnectedGraph();
+        greedyTest.testTreeGraph();
+        greedyTest.testLargeAndComplexGraph();
+        backtrackTest.testDisconnectedGraph();
+        backtrackTest.testFullyConnectedGraph();
+        backtrackTest.testTreeGraph();
+        backtrackTest.testLargeAndComplexGraph();
     }
 }
